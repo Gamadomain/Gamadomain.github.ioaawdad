@@ -1,126 +1,287 @@
-!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="mn">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gamestore - Алт худалдаж авах</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>Gamestore</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 15px;
+        }
+        .form-card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 480px;
+        }
+        .header {
+            background: #3b82f6;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        .header h1 {
+            font-size: 1.8em;
+            margin-bottom: 5px;
+        }
+        form {
+            padding: 20px;
+        }
+        .form-section {
+            margin-bottom: 15px;
+        }
+        .section-number {
+            background: #3b82f6;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            font-size: 0.85em;
+            margin-bottom: 8px;
+        }
+        label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #333;
+            font-size: 0.95em;
+        }
+        input[type="text"],
+        input[type="tel"],
+        input[type="number"],
+        input[type="datetime-local"],
+        input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-bottom: 8px;
+            font-size: 0.95em;
+        }
+        input[type="file"] {
+            display: none;
+        }
+        input[type="text"]:focus,
+        input[type="tel"]:focus,
+        input[type="number"]:focus,
+        input[type="datetime-local"]:focus {
+            outline: none;
+            border-color: #3b82f6;
+            background: #f0f6ff;
+        }
+        .upload-area {
+            border: 2px dashed #3b82f6;
+            border-radius: 4px;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            background: #f0f6ff;
+            margin-bottom: 8px;
+        }
+        .upload-area:hover {
+            background: #e0f0ff;
+        }
+        .upload-area p {
+            color: #3b82f6;
+            font-weight: 500;
+            margin: 0;
+            font-size: 0.9em;
+        }
+        .file-name {
+            color: #3b82f6;
+            font-size: 0.8em;
+            font-weight: 600;
+            margin-top: 5px;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #3b82f6;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        button:hover {
+            background: #2563eb;
+        }
+        button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+        .message {
+            padding: 10px;
+            border-radius: 4px;
+            margin-top: 10px;
+            text-align: center;
+            font-weight: 500;
+            display: none;
+        }
+        .success {
+            background: #dcfce7;
+            color: #166534;
+        }
+        .error {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+        .loading {
+            color: #3b82f6;
+            text-align: center;
+            display: none;
+            margin-top: 10px;
+            font-weight: 600;
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <div class="form-card">
-            <div class="header">
-                <h1>🎮 Gamestore</h1>
-                <p>Алт худалдаж авах цэнэгийн маягт</p>
-            </div>
-
-            <form id="submitForm">
-                <!-- Section 1: Phone Number -->
-                <div class="form-section">
-                    <div class="section-number">1</div>
-                    <label for="phone">📱 Утасны дугаар</label>
-                    <input 
-                        type="tel" 
-                        id="phone" 
-                        name="phone" 
-                        placeholder="+976 XXXX XXXX" 
-                        required
-                    >
-                </div>
-
-                <!-- Section 2: Gold Amount -->
-                <div class="form-section">
-                    <div class="section-number">2</div>
-                    <label for="gold">⭐ Хэдэн GOLD авмаар байна? (Хамгийн бага: 100)</label>
-                    <input 
-                        type="number" 
-                        id="gold" 
-                        name="gold" 
-                        min="100" 
-                        placeholder="100" 
-                        required
-                    >
-                </div>
-
-                <!-- Section 3: MonPay QR -->
-                <div class="form-section">
-                    <div class="section-number">3</div>
-                    <label for="monpayQr">💳 MonPay QR код аа явуулна уу</label>
-                    <div class="image-upload">
-                        <input 
-                            type="file" 
-                            id="monpayQr" 
-                            name="monpayQr" 
-                            accept="image/*" 
-                            required
-                        >
-                        <div class="upload-area" id="monpayUploadArea">
-                            <p>Зургийг эндээ сүүлүүлэх</p>
-                            <p class="file-name" id="monpayFileName"></p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Section 4: Bank Details -->
-                <div class="form-section">
-                    <div class="section-number">4</div>
-                    <label>💰 Данс шилжүүлэлтийн мэдээлэл</label>
-                    <input 
-                        type="text" 
-                        name="accountName" 
-                        placeholder="Данс эзэмшигчийн нэр" 
-                        required
-                    >
-                    <input 
-                        type="datetime-local" 
-                        name="transferTime" 
-                        required
-                    >
-                    <input 
-                        type="number" 
-                        name="transferAmount" 
-                        placeholder="Шилжүүлсэн мөнгөн дүн" 
-                        required
-                    >
-                </div>
-
-                <!-- Section 5: Graffiti Image -->
-                <div class="form-section">
-                    <div class="section-number">5</div>
-                    <label for="graffitiImage">🎨 Та GRAFFITI зарсан зураг аа явуулна уу!</label>
-                    <div class="image-upload">
-                        <input 
-                            type="file" 
-                            id="graffitiImage" 
-                            name="graffitiImage" 
-                            accept="image/*" 
-                            required
-                        >
-                        <div class="upload-area" id="graffitiUploadArea">
-                            <p>Зургийг эндээ сүүлүүлэх</p>
-                            <p class="file-name" id="graffitiFileName"></p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Submit Button -->
-                <button type="submit" class="submit-btn">
-                    <span>Болсон</span>
-                </button>
-            </form>
-
-            <!-- Loading and Message -->
-            <div id="loadingMessage" class="hidden">
-                <p>Мэдээлэл илгээж байна...</p>
-            </div>
-            <div id="successMessage" class="message success hidden">
-                ✅ Захиалга амжилттай илгээгдлээ! Удаа хандахыг хүлээнэ үү.
-            </div>
-            <div id="errorMessage" class="message error hidden"></div>
+    <div class="form-card">
+        <div class="header">
+            <h1>🎮 Gamestore</h1>
         </div>
+
+        <form id="submitForm">
+            <div class="form-section">
+                <div class="section-number">1</div>
+                <label>📱 Утасны дугаар</label>
+                <input type="tel" name="phone" placeholder="+976 XXXX XXXX" required>
+            </div>
+
+            <div class="form-section">
+                <div class="section-number">2</div>
+                <label>⭐ Хэдэн GOLD авмаар байна? (Хамгийн бага: 100)</label>
+                <input type="number" name="gold" min="100" placeholder="100" required>
+            </div>
+
+            <div class="form-section">
+                <div class="section-number">3</div>
+                <label>💳 MonPay QR код аа явуулна уу</label>
+                <input type="file" id="monpayQr" name="monpayQr" accept="image/*" required>
+                <div class="upload-area" id="monpayArea">
+                    <p>Зургийг эндээ сүүлүүлэх</p>
+                    <p class="file-name" id="monpayFile"></p>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <div class="section-number">4</div>
+                <label>💰 Данс шилжүүлэлтийн мэдээлэл</label>
+                <input type="text" name="accountName" placeholder="Данс эзэмшигчийн нэр" required>
+                <input type="datetime-local" name="transferTime" required>
+                <input type="number" name="transferAmount" placeholder="Шилжүүлсэн мөнгөн дүн" required>
+            </div>
+
+            <div class="form-section">
+                <div class="section-number">5</div>
+                <label>🎨 Та GRAFFITI зарсан зураг аа явуулна уу!</label>
+                <input type="file" id="graffitiImage" name="graffitiImage" accept="image/*" required>
+                <div class="upload-area" id="graffitiArea">
+                    <p>Зургийг эндээ сүүлүүлэх</p>
+                    <p class="file-name" id="graffitiFile"></p>
+                </div>
+            </div>
+
+            <button type="submit">Болсон</button>
+        </form>
+
+        <div class="loading" id="loading">Мэдээлэл илгээж байна...</div>
+        <div class="message success" id="success">✅ Захиалга амжилттай илгээгдлээ!</div>
+        <div class="message error" id="error"></div>
     </div>
 
-    <script src="js/script.js"></script>
+    <script>
+        const form = document.getElementById('submitForm');
+        const monpayQr = document.getElementById('monpayQr');
+        const graffitiImage = document.getElementById('graffitiImage');
+        const monpayArea = document.getElementById('monpayArea');
+        const graffitiArea = document.getElementById('graffitiArea');
+        const monpayFile = document.getElementById('monpayFile');
+        const graffitiFile = document.getElementById('graffitiFile');
+        const loading = document.getElementById('loading');
+        const success = document.getElementById('success');
+        const error = document.getElementById('error');
+
+        monpayArea.addEventListener('click', () => monpayQr.click());
+        graffitiArea.addEventListener('click', () => graffitiImage.click());
+
+        monpayQr.addEventListener('change', () => {
+            monpayFile.textContent = monpayQr.files[0] ? '✅ ' + monpayQr.files[0].name : '';
+        });
+
+        graffitiImage.addEventListener('change', () => {
+            graffitiFile.textContent = graffitiImage.files[0] ? '✅ ' + graffitiImage.files[0].name : '';
+        });
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            error.style.display = 'none';
+            success.style.display = 'none';
+
+            const phone = form.phone.value.trim();
+            const gold = form.gold.value;
+            const accountName = form.accountName.value.trim();
+            const transferTime = form.transferTime.value;
+            const transferAmount = form.transferAmount.value;
+
+            if (!phone) { error.textContent = '❌ Утасны дугаарыг оруулна уу!'; error.style.display = 'block'; return; }
+            if (!gold || parseInt(gold) < 100) { error.textContent = '❌ Алтын хэмжээ 100-ээс доош!'; error.style.display = 'block'; return; }
+            if (!monpayQr.files[0]) { error.textContent = '❌ MonPay QR cod аа сонгоно уу!'; error.style.display = 'block'; return; }
+            if (!graffitiImage.files[0]) { error.textContent = '❌ GRAFFITI зургийг сонгоно уу!'; error.style.display = 'block'; return; }
+            if (!accountName || !transferTime || !transferAmount) { error.textContent = '❌ Бүх талбарыг бөглөнө уу!'; error.style.display = 'block'; return; }
+
+            loading.style.display = 'block';
+            form.querySelector('button').disabled = true;
+
+            try {
+                const formData = new FormData();
+                formData.append('phone', phone);
+                formData.append('gold', gold);
+                formData.append('monpayQr', monpayQr.files[0]);
+                formData.append('graffitiImage', graffitiImage.files[0]);
+                formData.append('accountName', accountName);
+                formData.append('transferTime', transferTime);
+                formData.append('transferAmount', transferAmount);
+
+                const res = await fetch('/api/submit', { method: 'POST', body: formData });
+                loading.style.display = 'none';
+
+                if (res.ok) {
+                    success.style.display = 'block';
+                    form.reset();
+                    monpayFile.textContent = '';
+                    graffitiFile.textContent = '';
+                } else {
+                    const err = await res.json();
+                    error.textContent = '❌ ' + (err.error || 'Алдаа гарлаа!');
+                    error.style.display = 'block';
+                }
+            } catch (e) {
+                loading.style.display = 'none';
+                error.textContent = '❌ Сервертэй холбогдох боломжгүй!';
+                error.style.display = 'block';
+            } finally {
+                form.querySelector('button').disabled = false;
+            }
+        });
+    </script>
 </body>
 </html>
-
