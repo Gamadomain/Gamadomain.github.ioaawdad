@@ -18,51 +18,45 @@
                 <!-- Section 1: Phone Number -->
                 <div class="form-section">
                     <div class="section-number">1</div>
-                    <div class="section-content">
-                        <label for="phone">📱 Утасны дугаар</label>
-                        <input 
-                            type="tel" 
-                            id="phone" 
-                            name="phone" 
-                            placeholder="+976 XXXX XXXX" 
-                            required
-                        >
-                    </div>
+                    <label for="phone">📱 Утасны дугаар</label>
+                    <input 
+                        type="tel" 
+                        id="phone" 
+                        name="phone" 
+                        placeholder="+976 XXXX XXXX" 
+                        required
+                    >
                 </div>
 
                 <!-- Section 2: Gold Amount -->
                 <div class="form-section">
                     <div class="section-number">2</div>
-                    <div class="section-content">
-                        <label for="gold">⭐ Хэдэн GOLD авмаар байна? (Хамгийн бага: 100)</label>
-                        <input 
-                            type="number" 
-                            id="gold" 
-                            name="gold" 
-                            min="100" 
-                            placeholder="100" 
-                            required
-                        >
-                    </div>
+                    <label for="gold">⭐ Хэдэн GOLD авмаар байна? (Хамгийн бага: 100)</label>
+                    <input 
+                        type="number" 
+                        id="gold" 
+                        name="gold" 
+                        min="100" 
+                        placeholder="100" 
+                        required
+                    >
                 </div>
 
                 <!-- Section 3: MonPay QR -->
                 <div class="form-section">
                     <div class="section-number">3</div>
-                    <div class="section-content">
-                        <label for="monpayQr">💳 MonPay QR код аа явуулна уу</label>
-                        <div class="image-upload">
-                            <input 
-                                type="file" 
-                                id="monpayQr" 
-                                name="monpayQr" 
-                                accept="image/*" 
-                                required
-                            >
-                            <div class="upload-area" id="monpayUploadArea">
-                                <p>Зургийг эндээ сүүлүүлэх</p>
-                                <p class="file-name" id="monpayFileName"></p>
-                            </div>
+                    <label for="monpayQr">💳 MonPay QR код аа явуулна уу</label>
+                    <div class="image-upload">
+                        <input 
+                            type="file" 
+                            id="monpayQr" 
+                            name="monpayQr" 
+                            accept="image/*" 
+                            required
+                        >
+                        <div class="upload-area" id="monpayUploadArea">
+                            <p>Зургийг эндээ сүүлүүлэх</p>
+                            <p class="file-name" id="monpayFileName"></p>
                         </div>
                     </div>
                 </div>
@@ -70,46 +64,41 @@
                 <!-- Section 4: Bank Details -->
                 <div class="form-section">
                     <div class="section-number">4</div>
-                    <div class="section-content">
-                        <label>💰 Данс шилжүүлэлтийн мэдээлэл</label>
-                        <input 
-                            type="text" 
-                            name="accountName" 
-                            placeholder="Данс эзэмшигчийн нэр" 
-                            required
-                        >
-                        <input 
-                            type="datetime-local" 
-                            name="transferTime" 
-                            placeholder="Шилжүүлсэн цаг" 
-                            required
-                        >
-                        <input 
-                            type="number" 
-                            name="transferAmount" 
-                            placeholder="Шилжүүлсэн мөнгөн дүн" 
-                            required
-                        >
-                    </div>
+                    <label>💰 Данс шилжүүлэлтийн мэдээлэл</label>
+                    <input 
+                        type="text" 
+                        name="accountName" 
+                        placeholder="Данс эзэмшигчийн нэр" 
+                        required
+                    >
+                    <input 
+                        type="datetime-local" 
+                        name="transferTime" 
+                        required
+                    >
+                    <input 
+                        type="number" 
+                        name="transferAmount" 
+                        placeholder="Шилжүүлсэн мөнгөн дүн" 
+                        required
+                    >
                 </div>
 
                 <!-- Section 5: Graffiti Image -->
                 <div class="form-section">
                     <div class="section-number">5</div>
-                    <div class="section-content">
-                        <label for="graffitiImage">🎨 Та GRAFFITI зарсан зураг аа явуулна уу!</label>
-                        <div class="image-upload">
-                            <input 
-                                type="file" 
-                                id="graffitiImage" 
-                                name="graffitiImage" 
-                                accept="image/*" 
-                                required
-                            >
-                            <div class="upload-area" id="graffitiUploadArea">
-                                <p>Зургийг эндээ сүүлүүлэх</p>
-                                <p class="file-name" id="graffitiFileName"></p>
-                            </div>
+                    <label for="graffitiImage">🎨 Та GRAFFITI зарсан зураг аа явуулна уу!</label>
+                    <div class="image-upload">
+                        <input 
+                            type="file" 
+                            id="graffitiImage" 
+                            name="graffitiImage" 
+                            accept="image/*" 
+                            required
+                        >
+                        <div class="upload-area" id="graffitiUploadArea">
+                            <p>Зургийг эндээ сүүлүүлэх</p>
+                            <p class="file-name" id="graffitiFileName"></p>
                         </div>
                     </div>
                 </div>
