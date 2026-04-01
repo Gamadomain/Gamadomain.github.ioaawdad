@@ -1,1 +1,137 @@
+!DOCTYPE html>
+<html lang="mn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gamestore - Алт худалдаж авах</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="form-card">
+            <div class="header">
+                <h1>🎮 Gamestore</h1>
+                <p>Алт худалдаж авах цэнэгийн маягт</p>
+            </div>
+
+            <form id="submitForm">
+                <!-- Section 1: Phone Number -->
+                <div class="form-section">
+                    <div class="section-number">1</div>
+                    <div class="section-content">
+                        <label for="phone">📱 Утасны дугаар</label>
+                        <input 
+                            type="tel" 
+                            id="phone" 
+                            name="phone" 
+                            placeholder="+976 XXXX XXXX" 
+                            required
+                        >
+                    </div>
+                </div>
+
+                <!-- Section 2: Gold Amount -->
+                <div class="form-section">
+                    <div class="section-number">2</div>
+                    <div class="section-content">
+                        <label for="gold">⭐ Хэдэн GOLD авмаар байна? (Хамгийн бага: 100)</label>
+                        <input 
+                            type="number" 
+                            id="gold" 
+                            name="gold" 
+                            min="100" 
+                            placeholder="100" 
+                            required
+                        >
+                    </div>
+                </div>
+
+                <!-- Section 3: MonPay QR -->
+                <div class="form-section">
+                    <div class="section-number">3</div>
+                    <div class="section-content">
+                        <label for="monpayQr">💳 MonPay QR код аа явуулна уу</label>
+                        <div class="image-upload">
+                            <input 
+                                type="file" 
+                                id="monpayQr" 
+                                name="monpayQr" 
+                                accept="image/*" 
+                                required
+                            >
+                            <div class="upload-area" id="monpayUploadArea">
+                                <p>Зургийг эндээ сүүлүүлэх</p>
+                                <p class="file-name" id="monpayFileName"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 4: Bank Details -->
+                <div class="form-section">
+                    <div class="section-number">4</div>
+                    <div class="section-content">
+                        <label>💰 Данс шилжүүлэлтийн мэдээлэл</label>
+                        <input 
+                            type="text" 
+                            name="accountName" 
+                            placeholder="Данс эзэмшигчийн нэр" 
+                            required
+                        >
+                        <input 
+                            type="datetime-local" 
+                            name="transferTime" 
+                            placeholder="Шилжүүлсэн цаг" 
+                            required
+                        >
+                        <input 
+                            type="number" 
+                            name="transferAmount" 
+                            placeholder="Шилжүүлсэн мөнгөн дүн" 
+                            required
+                        >
+                    </div>
+                </div>
+
+                <!-- Section 5: Graffiti Image -->
+                <div class="form-section">
+                    <div class="section-number">5</div>
+                    <div class="section-content">
+                        <label for="graffitiImage">🎨 Та GRAFFITI зарсан зураг аа явуулна уу!</label>
+                        <div class="image-upload">
+                            <input 
+                                type="file" 
+                                id="graffitiImage" 
+                                name="graffitiImage" 
+                                accept="image/*" 
+                                required
+                            >
+                            <div class="upload-area" id="graffitiUploadArea">
+                                <p>Зургийг эндээ сүүлүүлэх</p>
+                                <p class="file-name" id="graffitiFileName"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="submit-btn">
+                    <span>Болсон</span>
+                </button>
+            </form>
+
+            <!-- Loading and Message -->
+            <div id="loadingMessage" class="hidden">
+                <p>Мэдээлэл илгээж байна...</p>
+            </div>
+            <div id="successMessage" class="message success hidden">
+                ✅ Захиалга амжилттай илгээгдлээ! Удаа хандахыг хүлээнэ үү.
+            </div>
+            <div id="errorMessage" class="message error hidden"></div>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
 
